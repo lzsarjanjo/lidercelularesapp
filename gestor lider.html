@@ -145,11 +145,18 @@
                 Selecione um módulo abaixo para acessar os procedimentos detalhados, dicas e guias para sua liderança.
             </p>
 
-            <!-- Novo Sistema de Abas - CLASSES STICKY REMOVIDAS -->
+            <!-- NOVO Sistema de Abas (com Avisos) -->
             <div class="mb-8 border-b border-gray-200 dark:border-gray-700">
                 <ul class="flex flex-wrap -mb-px text-base font-medium text-center" id="tabs-nav">
                     <li class="mr-2">
-                        <button id="tab-procedimentos" onclick="switchTab('procedimentos')" class="inline-block p-4 border-b-2 rounded-t-lg transition-colors duration-200">Procedimentos</button>
+                        <button id="tab-avisos" onclick="switchTab('avisos')" class="inline-block p-4 border-b-2 rounded-t-lg transition-colors duration-200">
+                            Avisos
+                            <!-- Ponto de notificação (exemplo) -->
+                            <span class="inline-flex items-center justify-center w-4 h-4 ml-1 text-xs font-semibold text-white bg-red-500 rounded-full">1</span>
+                        </button>
+                    </li>
+                    <li class="mr-2">
+                        <button id="tab-procedimentos" onclick="switchTab('procedimentos')" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg transition-colors duration-200">Procedimentos</button>
                     </li>
                     <li class="mr-2">
                         <button id="tab-cursos" onclick="switchTab('cursos')" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg transition-colors duration-200">Cursos</button>
@@ -157,8 +164,52 @@
                 </ul>
             </div>
 
+            <!-- Conteúdo da Aba 0: Avisos (NOVO) -->
+            <div id="tab-content-avisos" class="tab-content hidden">
+                <p class="text-gray-600 dark:text-gray-400 mb-6 transition duration-300 text-sm italic">
+                    Comunicados importantes da Diretoria e Supervisão.
+                </p>
+                
+                <!-- Mural de Avisos (Aqui é onde vamos colar os novos avisos) -->
+                <div class="space-y-5">
+                    
+                    <!-- NOVO AVISO: RMA -->
+                    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-5 sm:p-6 border-l-4 border-accent-yellow dark:border-yellow-400">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="text-xl font-bold text-accent-yellow dark:text-yellow-400">Aviso: Organização de Produtos RMA</h4>
+                            <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 flex-shrink-0 ml-2">17/11/2025</span>
+                        </div>
+                        <p class="text-gray-700 dark:text-gray-300 text-sm sm:text-base">
+                            Atenção, equipe.
+                            <br><br>
+                            Solicitamos que todos os produtos classificados como <strong>RMA (Retorno de Mercadoria Autorizada)</strong> — incluindo itens com avarias, defeitos ou devoluções — sejam imediatamente organizados e preparados para o envio ao setor responsável.
+                            <br><br>
+                            A correta separação e identificação é crucial para a agilidade do processo. Contamos com a colaboração de todos.
+                        </p>
+                    </div>
+
+                    <!-- AVISO MODELO (PLACEHOLDER) -->
+                    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-5 sm:p-6 border-l-4 border-primary-blue dark:border-blue-400">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="text-xl font-bold text-primary-blue dark:text-blue-400">Portal de Treinamento no Ar!</h4>
+                            <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 flex-shrink-0 ml-2">17/11/2025</span>
+                        </div>
+                        <p class="text-gray-700 dark:text-gray-300 text-sm sm:text-base">
+                            É com grande alegria que lançamos o nosso Portal do Colaborador!
+                            <br><br>
+                            Este será o nosso canal oficial para todos os treinamentos em vídeo (na aba <strong>Cursos</strong>) e para os manuais de conduta e operação (na aba <strong>Procedimentos</strong>).
+                            <br><br>
+                            Explore o conteúdo e bons estudos!
+                        </p>
+                    </div>
+                    
+                    <!-- Novos avisos serão adicionados acima desta linha -->
+
+                </div>
+            </div>
+
             <!-- Conteúdo da Aba 1: Procedimentos (Grid de Módulos) -->
-            <div id="tab-content-procedimentos" class="tab-content">
+            <div id="tab-content-procedimentos" class="tab-content hidden">
                 <p class="text-gray-600 dark:text-gray-400 mb-6 transition duration-300 text-sm italic">
                     Regras e guias operacionais essenciais para o dia a dia.
                 </p>
@@ -571,7 +622,7 @@
         let userId = null;
 
         // --- Variáveis de Navegação e Estado ---
-        let currentTab = 'procedimentos';
+        let currentTab = 'avisos'; // MUDANÇA: Aba padrão agora é 'avisos'
         let moduleToOpenAfterAuth = null; // Guarda o ID do módulo a ser aberto após o login/senha
 
         // --- Variáveis de Senha ---
@@ -589,9 +640,11 @@
         const videoPlayerModal = document.getElementById('video-player-modal');
         const videoIframe = document.getElementById('video-iframe');
 
-        // --- Elementos de Abas ---
+        // --- Elementos de Abas (NOVO: Avisos) ---
+        const tabAvisosBtn = document.getElementById('tab-avisos'); // NOVO
         const tabProcedimentosBtn = document.getElementById('tab-procedimentos');
         const tabCursosBtn = document.getElementById('tab-cursos');
+        const tabContentAvisos = document.getElementById('tab-content-avisos'); // NOVO
         const tabContentProcedimentos = document.getElementById('tab-content-procedimentos');
         const tabContentCursos = document.getElementById('tab-content-cursos');
 
@@ -1359,30 +1412,36 @@ function applyTheme() {
         // --- Funções de Navegação e Conteúdo ---
         
         /**
-         * Alterna entre as abas "Procedimentos" e "Cursos".
-         * @param {string} tabName - 'procedimentos' ou 'cursos'.
+         * Alterna entre as abas "Avisos", "Procedimentos" e "Cursos".
+         * @param {string} tabName - 'avisos', 'procedimentos' ou 'cursos'.
          */
         function switchTab(tabName) {
             currentTab = tabName;
 
-            // Resetar estilos dos botões
-            tabProcedimentosBtn.classList.remove('border-primary-blue', 'text-primary-blue', 'dark:text-blue-400');
-            tabCursosBtn.classList.remove('border-primary-blue', 'text-primary-blue', 'dark:text-blue-400');
-            tabProcedimentosBtn.classList.add('border-transparent', 'text-gray-500', 'dark:text-gray-400', 'hover:text-gray-600', 'hover:border-gray-300', 'dark:hover:text-gray-300');
-            tabCursosBtn.classList.add('border-transparent', 'text-gray-500', 'dark:text-gray-400', 'hover:text-gray-600', 'hover:border-gray-300', 'dark:hover:text-gray-300');
+            // Resetar estilos de todos os botões
+            const tabs = [tabAvisosBtn, tabProcedimentosBtn, tabCursosBtn];
+            tabs.forEach(tab => {
+                tab.classList.remove('border-primary-blue', 'text-primary-blue', 'dark:text-blue-400');
+                tab.classList.add('border-transparent', 'text-gray-500', 'dark:text-gray-400', 'hover:text-gray-600', 'hover:border-gray-300', 'dark:hover:text-gray-300');
+            });
 
-            // Aplicar estilos da aba ativa e alternar conteúdo
-            if (tabName === 'procedimentos') {
+            // Esconder todos os conteúdos
+            tabContentAvisos.classList.add('hidden');
+            tabContentProcedimentos.classList.add('hidden');
+            tabContentCursos.classList.add('hidden');
+
+            // Aplicar estilos da aba ativa e mostrar conteúdo
+            if (tabName === 'avisos') {
+                tabAvisosBtn.classList.add('border-primary-blue', 'text-primary-blue', 'dark:text-blue-400');
+                tabAvisosBtn.classList.remove('border-transparent', 'text-gray-500', 'dark:text-gray-400', 'hover:text-gray-600', 'hover:border-gray-300', 'dark:hover:text-gray-300');
+                tabContentAvisos.classList.remove('hidden');
+            } else if (tabName === 'procedimentos') {
                 tabProcedimentosBtn.classList.add('border-primary-blue', 'text-primary-blue', 'dark:text-blue-400');
                 tabProcedimentosBtn.classList.remove('border-transparent', 'text-gray-500', 'dark:text-gray-400', 'hover:text-gray-600', 'hover:border-gray-300', 'dark:hover:text-gray-300');
-                
                 tabContentProcedimentos.classList.remove('hidden');
-                tabContentCursos.classList.add('hidden');
-            } else {
+            } else { // Cursos
                 tabCursosBtn.classList.add('border-primary-blue', 'text-primary-blue', 'dark:text-blue-400');
                 tabCursosBtn.classList.remove('border-transparent', 'text-gray-500', 'dark:text-gray-400', 'hover:text-gray-600', 'hover:border-gray-300', 'dark:hover:text-gray-300');
-
-                tabContentProcedimentos.classList.add('hidden');
                 tabContentCursos.classList.remove('hidden');
             }
         }
@@ -1501,7 +1560,10 @@ function applyTheme() {
             // Esta função não deve ser chamada se os vídeos estiverem bloqueados.
             // Ação de fallback: abrir em nova aba.
             console.warn("openVideoModal foi chamada, mas os vídeos estão configurados para abrir em nova aba para evitar erros de incorporação.");
-            window.open(embedUrl.replace('/preview', '/view?usp=drive_link'), '_blank');
+            
+            // CORREÇÃO: Os links do drive estão em /view, o que é correto para nova aba.
+            // Os links do youtube já estão no formato de watch.
+            window.open(embedUrl, '_blank');
             
             // Código original do miniplayer (desativado):
             // videoIframe.src = embedUrl;
