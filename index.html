@@ -1348,15 +1348,27 @@
                 
                 console.log("Firebase Inicializado com Sucesso. User ID:", userId);
                 
-                // Atualiza a mensagem de boas-vindas com o início do ID do usuário (Regra Mandatória)
-                document.getElementById('welcome-message').textContent = `Bem-vindo(a)! ID: ${userId.substring(0, 8)}...`;
+                // --- INÍCIO DA MODIFICAÇÃO (TRY) ---
+                const welcomeMsg = document.getElementById('welcome-message');
+                welcomeMsg.textContent = `Bem-vindo(a)! ID: ${userId.substring(0, 8)}...`;
+                welcomeMsg.classList.remove('animate-pulse'); // Remove o pulso no sucesso
+                // --- FIM DA MODIFICAÇÃO (TRY) ---
                 
                 // Inicializa a aba após a autenticação
                 switchTab(currentTab); 
 
             } catch (error) {
-                console.error("Erro ao inicializar Firebase ou Autenticação:", error);
-                document.getElementById('welcome-message').textContent = `Erro de Auth. Recarregue.`;
+                // --- INÍCIO DA MODIFICAÇÃO (CATCH) ---
+                console.error("Firebase Auth Falhou (Isso é esperado em testes locais):", error);
+                
+                const welcomeMsg = document.getElementById('welcome-message');
+                welcomeMsg.textContent = `Modo Offline (Auth falhou)`;
+                welcomeMsg.classList.remove('animate-pulse'); // Remove o pulso no erro
+
+                // IMPORTANTE: Mesmo que o Firebase falhe, inicializamos a UI
+                // para que o portal possa ser navegado (ver avisos, etc.)
+                switchTab(currentTab); 
+                // --- FIM DA MODIFICAÇÃO (CATCH) ---
             }
         }
 
