@@ -49,10 +49,11 @@
             box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.5), 0 5px 10px -5px rgba(0, 0, 0, 0.3);
         }
         
-        /* Estilo para o Modal de Senha */
+        /* Estilo para Modais (Senha e Vídeo) */
         .modal-overlay {
             z-index: 50; /* Garante que fique acima de tudo */
             background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
         }
         .modal-content {
             z-index: 60;
@@ -334,9 +335,45 @@
             <!-- Conteúdo da Aba 2: Cursos -->
             <div id="tab-content-cursos" class="tab-content hidden">
                 <p class="text-gray-600 dark:text-gray-400 mb-6 transition duration-300 text-sm italic">
-                    Treinamentos, vídeos e material de aprofundamento para desenvolvimento de liderança.
+                    Treinamentos em vídeo para aprimoramento contínuo.
                 </p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="course-grid">
+                    
+                    <!-- NOVO CURSO: Introdução a Lider (DRIVE) - ÍCONE PLAY -->
+                    <div class="content-card bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 cursor-pointer hover:border-accent-sky dark:hover:border-accent-sky flex flex-col items-start"
+                            onclick="handleModuleClick('Treinamento de introdução a lider', 'intro-leadership-course')">
+                        <div class="w-full h-32 rounded-lg mb-4 flex items-center justify-center p-4 bg-gradient-to-r from-accent-sky to-cyan-400 shadow-md">
+                            <!-- Ícone de Play/Vídeo (YouTube) -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="currentColor" class="text-white">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Treinamento de introdução a lider</h3>
+                        <p class="text-gray-600 dark:text-gray-400 flex-grow text-sm">
+                            Curso essencial com os 7 passos da venda e atendimento online. (Vídeos internos via Drive).
+                        </p>
+                        <div class="mt-4 text-accent-sky dark:text-sky-400 font-semibold text-sm flex items-center">
+                            Acessar Curso
+                        </div>
+                    </div>
+
+                    <!-- NOVO CURSO: Edição Simples (DRIVE) - ÍCONE CORRIGIDO -->
+                    <div class="content-card bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 cursor-pointer hover:border-accent-fuchsia dark:hover:border-accent-fuchsia flex flex-col items-start"
+                            onclick="handleModuleClick('Curso de edição simples', 'simple-editing-course')">
+                        <div class="w-full h-32 rounded-lg mb-4 flex items-center justify-center p-4 bg-gradient-to-r from-accent-fuchsia to-pink-400 shadow-md">
+                            <!-- Ícone de Play/Vídeo (YouTube) -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="currentColor" class="text-white">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Curso de edição simples</h3>
+                        <p class="text-gray-600 dark:text-gray-400 flex-grow text-sm">
+                            Aprenda o básico de edição de vídeo em 3 módulos. (Vídeos internos via Drive).
+                        </p>
+                        <div class="mt-4 text-accent-fuchsia dark:text-fuchsia-400 font-semibold text-sm flex items-center">
+                            Acessar Curso
+                        </div>
+                    </div>
                     
                     <!-- Curso 1: Como Vender Valor (Ciano/YouTube) -->
                     <div class="content-card bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 cursor-pointer hover:border-accent-sky dark:hover:border-accent-sky flex flex-col items-start"
@@ -403,7 +440,7 @@
                         </div>
                         <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Curso: Vendas Pelo Whatsapp</h3>
                         <p class="text-gray-600 dark:text-gray-400 flex-grow text-sm">
-                            Aprenda a utilizar o WhatsApp de forma estratégica para gerar leads, nutrir clientes e fechar vendas com eficiência, transformando conversas em faturamento.
+                            Aprenda a utilizar o WhatsApp de forma estratégica para gerar leads, nutrir clientes e fechar vendas com eficiência.
                         </p>
                         <div class="mt-4 text-secondary-green dark:text-green-400 font-semibold text-sm flex items-center">
                             Acessar Curso
@@ -412,7 +449,7 @@
 
                     <!-- NOVO CURSO: Técnicas Poderosas -->
                     <div class="content-card bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 cursor-pointer hover:border-accent-sky dark:hover:border-accent-sky flex flex-col items-start"
-                            onclick="handleModuleClick('Curso: Técnicas Poderosas para Aumentar suas Vendas', 'powerful-sales-techniques')">
+                            onclick="handleModuleClick('Curso: Técnicas Poderosas', 'powerful-sales-techniques')">
                         <div class="w-full h-32 rounded-lg mb-4 flex items-center justify-center p-4 bg-gradient-to-r from-accent-sky to-cyan-400 shadow-md">
                             <!-- Ícone de Play/Vídeo (YouTube) -->
                             <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="currentColor" class="text-white">
@@ -445,7 +482,6 @@
                             Acesso Exclusivo
                         </div>
                     </div>
-
 
                 </div>
             </div>
@@ -499,6 +535,21 @@
             </div>
         </div>
 
+        <!-- 4. MODAL DE VÍDEO (REMOVIDO DA FUNCIONALIDADE, MANTIDO NO CÓDIGO) -->
+        <div id="video-player-modal" class="modal-overlay hidden fixed inset-0 flex items-center justify-center p-4">
+            <div class="modal-content bg-gray-900 dark:bg-black rounded-xl shadow-2xl p-4 transition-all duration-300 transform scale-100 border border-gray-700 w-full max-w-4xl">
+                <!-- Cabeçalho do Modal de Vídeo -->
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="text-xl font-bold text-white">Visualizador de Curso</h3>
+                    <button onclick="closeVideoModal()" class="text-gray-300 hover:text-white text-3xl font-bold" title="Fechar">&times;</button>
+                </div>
+                <!-- Iframe responsivo -->
+                <div class="aspect-video">
+                    <iframe id="video-iframe" class="w-full h-full rounded-lg" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
 
     </div>
 
@@ -534,6 +585,9 @@
         const passwordModal = document.getElementById('password-modal');
         const accessCodeInput = document.getElementById('access-code');
         const passwordError = document.getElementById('password-error');
+        // RE-ADICIONADOS
+        const videoPlayerModal = document.getElementById('video-player-modal');
+        const videoIframe = document.getElementById('video-iframe');
 
         // --- Elementos de Abas ---
         const tabProcedimentosBtn = document.getElementById('tab-procedimentos');
@@ -633,7 +687,7 @@
                         <ol class="list-decimal">
                             <li><strong>Passo 1:</strong> Ouça o cliente com total atenção, sem interrompê-lo.</li>
                             <li><strong>Passo 2:</strong> Demonstre empatia (Ex: "Eu entendo sua frustração...").</li>
-                            <li><strong>Passo 3:</strong> Assuma a responsabilidade pela solução (Ex: "Eu vou resolver isso para o(a) senhor(a)").</li>
+                            <li><strong>Passo 3:</strong> Assuma a responsabilidade pela solution (Ex: "Eu vou resolver isso para o(a) senhor(a)").</li>
                             <li><strong>Passo 4:</strong> Encaminhe para o setor responsável (assistência, financeiro) ou resolva imediatamente. Nunca deixe o cliente "na mão".</li>
                         </ol>
 
@@ -734,7 +788,7 @@
                             <li>Critérios de conduta profissional, como assiduidade e pontualidade.</li>
                             <li>A ausência de sanções disciplinares (Advertências por Escrito ou Suspensões) no período de apuração.</li>
                         </ul>
-                        <p>Desta forma, o não recebimento total ou parcial da bonificação não é um "desconto" ou punição, mas sim o não cumprimento das regras pré-estabelecidas para conquistar o prêmio.</p>
+                        <p>Desta forma, o não recebimento total ou parcial da bonificação não é um "desconto" ou punição, but sim o não cumprimento das regras pré-estabelecidas para conquistar o prêmio.</p>
                     </div>
                 `,
             },
@@ -990,7 +1044,84 @@
                 restricted: false,
                 content: `<p class="text-lg">Treinamento no uso do CRM, gestão de leads, follow-up e organização do processo de vendas. O seu sucesso depende da organização!</p><p class="mt-4 text-gray-500 dark:text-gray-400">Conteúdo em construção. Por favor, volte mais tarde.</p>`,
             },
-            // CURSO 1
+            
+            // --- CURSOS ---
+
+            // NOVO CURSO (DRIVE) - INTRO LIDER
+            'intro-leadership-course': {
+                color: 'accent-sky',
+                restricted: false,
+                content: `
+                    <h4 class="text-2xl font-bold mb-5 text-accent-sky dark:text-sky-400">Treinamento de introdução a lider</h4>
+                    <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">Curso essencial com os 7 passos da venda, vídeos demonstrativos e atendimento online. Selecione o módulo abaixo para assistir.</p>
+                    <p class="font-semibold text-gray-800 dark:text-gray-200 mb-4">Módulos:</p>
+                    
+                    <div class="space-y-3">
+                        <!-- MÓDULO 1: CORRIGIDO para window.open() e botão vermelho -->
+                        <button onclick="window.open('https://drive.google.com/file/d/1f9rmaHC-x49FvTz3StyO0OS-gUwjODG9/view?usp=drive_link', '_blank')"
+                            class="w-full text-left px-4 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition duration-200 shadow-md flex items-center space-x-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                            <span>Boas vindas</span>
+                        </button>
+                        
+                        <!-- MÓDULO 2: CORRIGIDO para window.open() e botão vermelho -->
+                        <button onclick="window.open('https://drive.google.com/file/d/1VpYDXrMy-zg2_PDYy5s3aXVTckxLbhTn/view?usp=drive_link', '_blank')"
+                            class="w-full text-left px-4 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition duration-200 shadow-md flex items-center space-x-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                            <span>7 passos da vendas</span>
+                        </button>
+
+                        <!-- MÓDULO 3: CORRIGIDO para window.open() e botão vermelho -->
+                        <button onclick="window.open('https://drive.google.com/file/d/1UQvpHaQPX5n0ByjbZglbzQVxrqgQ6aLG/view?usp=drive_link', '_blank')"
+                            class="w-full text-left px-4 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition duration-200 shadow-md flex items-center space-x-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                            <span>Aplicando os 7 passos (Demonstração)</span>
+                        </button>
+                        
+                        <!-- MÓDULO 4: CORRIGIDO para window.open() e botão vermelho -->
+                        <button onclick="window.open('https://drive.google.com/file/d/1Nem7qrTvInaBWpOyRE4xBhoII9g-Tpnx/view?usp=drive_link', '_blank')"
+                            class="w-full text-left px-4 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition duration-200 shadow-md flex items-center space-x-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                            <span>Atendimento Online</span>
+                        </button>
+                    </div>
+                `,
+            },
+
+            // NOVO CURSO (DRIVE)
+            'simple-editing-course': {
+                color: 'accent-fuchsia',
+                restricted: false,
+                content: `
+                    <h4 class="text-2xl font-bold mb-5 text-accent-fuchsia dark:text-fuchsia-400">Curso de edição simples</h4>
+                    <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">Aprenda o básico de edição de vídeo. Selecione o módulo abaixo para assistir.</p>
+                    <p class="font-semibold text-gray-800 dark:text-gray-200 mb-4">Módulos:</p>
+                    
+                    <div class="space-y-3">
+                        <!-- MÓDULO 1: CORRIGIDO para window.open() e botão vermelho -->
+                        <button onclick="window.open('https://drive.google.com/file/d/1C6e83TRauT0yifXIoNDljuVEwTr-DnsU/view?usp=drive_link', '_blank')"
+                            class="w-full text-left px-4 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition duration-200 shadow-md flex items-center space-x-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                            <span>Módulo 1</span>
+                        </button>
+                        
+                        <!-- MÓDULO 2: CORRIGIDO para window.open() e botão vermelho -->
+                        <button onclick="window.open('https://drive.google.com/file/d/1AqxP8F4AgshPcWK2GbS5Q7cKYL2g5geZ/view?usp=drive_link', '_blank')"
+                            class="w-full text-left px-4 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition duration-200 shadow-md flex items-center space-x-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                            <span>Módulo 2</span>
+                        </button>
+
+                        <!-- MÓDULO 3: CORRIGIDO para window.open() e botão vermelho -->
+                        <button onclick="window.open('https://drive.google.com/file/d/1-0moywDVbXmzX9WJGOh_1npC-frvDPBB/view?usp=drive_link', '_blank')"
+                            class="w-full text-left px-4 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition duration-200 shadow-md flex items-center space-x-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                            <span>Módulo 3</span>
+                        </button>
+                    </div>
+                `,
+            },
+            // CURSO (YOUTUBE)
             'selling-value-course': {
                 color: 'accent-sky',
                 restricted: false,
@@ -999,16 +1130,16 @@
                     <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">Este curso foca em técnicas avançadas de vendas, posicionamento de produtos premium e comunicação eficaz para transmitir valor ao cliente, elevando a percepção de qualidade e fechamento.</p>
                     <p class="font-semibold text-gray-800 dark:text-gray-200 mb-4">Pronto para começar?</p>
                     
+                    <!-- YOUTUBE: Usa window.open() para evitar Erro 153 -->
                     <button onclick="window.open('https://www.youtube.com/watch?v=hgKiETtj_kY', '_blank')"
                         class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition duration-200 shadow-lg flex items-center justify-center space-x-2 w-full sm:w-auto">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
                         <span class="text-lg">Assistir ao Curso (YouTube)</span>
                     </button>
-
                     <p class="mt-8 text-sm text-gray-500 dark:text-gray-400">O conteúdo escrito do curso será adicionado abaixo futuramente.</p>
                 `,
             },
-            // CURSO 2
+            // CURSO (YOUTUBE)
             'mental-triggers-course': {
                 color: 'accent-sky',
                 restricted: false,
@@ -1017,16 +1148,16 @@
                     <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">Aprenda a ativar os gatilhos mentais mais poderosos para influenciar decisões de compra e melhorar sua persuasão.</p>
                     <p class="font-semibold text-gray-800 dark:text-gray-200 mb-4">Pronto para começar?</p>
                     
+                    <!-- YOUTUBE: Usa window.open() para evitar Erro 153 -->
                     <button onclick="window.open('https://youtu.be/tNKimFIwg_k', '_blank')"
                         class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition duration-200 shadow-lg flex items-center justify-center space-x-2 w-full sm:w-auto">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
                         <span class="text-lg">Assistir ao Curso (YouTube)</span>
                     </button>
-
                     <p class="mt-8 text-sm text-gray-500 dark:text-gray-400">O conteúdo escrito do curso será adicionado abaixo futuramente.</p>
                 `,
             },
-            // NOVO CURSO ADICIONADO: Superar Objeções
+            // CURSO (YOUTUBE)
             'objection-course': {
                 color: 'accent-sky',
                 restricted: false,
@@ -1035,16 +1166,16 @@
                     <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">Treinamento essencial focado em identificar, compreender e responder de forma eficaz às objeções mais comuns dos clientes, transformando resistência em vendas.</p>
                     <p class="font-semibold text-gray-800 dark:text-gray-200 mb-4">Pronto para aprimorar sua técnica?</p>
                     
+                    <!-- YOUTUBE: Usa window.open() para evitar Erro 153 -->
                     <button onclick="window.open('https://youtu.be/3weaqS7tN4I', '_blank')"
                         class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition duration-200 shadow-lg flex items-center justify-center space-x-2 w-full sm:w-auto">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
                         <span class="text-lg">Assistir ao Curso (YouTube)</span>
                     </button>
-
                     <p class="mt-8 text-sm text-gray-500 dark:text-gray-400">O conteúdo escrito do curso será adicionado abaixo futuramente.</p>
                 `,
             },
-            // NOVO CURSO: Vendas Pelo Whatsapp
+            // CURSO (YOUTUBE)
             'whatsapp-selling-course': {
                 color: 'secondary-green',
                 restricted: false,
@@ -1053,34 +1184,43 @@
                     <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">Aprenda a utilizar o WhatsApp de forma estratégica para gerar leads, nutrir clientes e fechar vendas com eficiência, transformando conversas em faturamento.</p>
                     <p class="font-semibold text-gray-800 dark:text-gray-200 mb-4">Pronto para começar?</p>
                     
+                    <!-- YOUTUBE: Usa window.open() para evitar Erro 153 -->
                     <button onclick="window.open('https://youtu.be/lz-IDastdZk', '_blank')"
                         class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition duration-200 shadow-lg flex items-center justify-center space-x-2 w-full sm:w-auto">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
                         <span class="text-lg">Assistir ao Curso (YouTube)</span>
                     </button>
-
                     <p class="mt-8 text-sm text-gray-500 dark:text-gray-400">O conteúdo escrito do curso será adicionado abaixo futuramente.</p>
                 `,
             },
-            // NOVO CURSO: Técnicas Poderosas
+            // CURSO (YOUTUBE)
             'powerful-sales-techniques': {
                 color: 'accent-sky',
                 restricted: false,
                 content: `
-                    <h4 class="text-2xl font-bold mb-5 text-accent-sky dark:text-sky-400">Curso: Técnicas Poderosas para Aumentar suas Vendas</h4>
+                    <h4 class="text-2xl font-bold mb-5 text-accent-sky dark:text-sky-400">Curso: Técnicas Poderosas</h4>
                     <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">Aprenda estratégias comprovadas para identificar oportunidades, contornar objeções e fechar mais vendas no dia a dia.</p>
-                    <p class="font-semibold text-gray-800 dark:text-gray-200 mb-4">Pronto para começar?</p>
+                    <p class="font-semibold text-gray-800 dark:text-gray-200 mb-4">Assista agora:</p>
                     
-                    <button onclick="window.open('https://youtu.be/qGEvfcvuvDg', '_blank')"
-                        class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition duration-200 shadow-lg flex items-center justify-center space-x-2 w-full sm:w-auto">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-                        <span class="text-lg">Assistir ao Curso (YouTube)</span>
-                    </button>
-
+                    <div class="space-y-3">
+                        <!-- YOUTUBE: Usa window.open() para evitar Erro 153 -->
+                        <button onclick="window.open('https://youtu.be/qGEvfcvuvDg', '_blank')"
+                            class="w-full text-left px-4 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition duration-200 shadow-md flex items-center space-x-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                            <span>Técnicas Poderosas (Parte 1)</span>
+                        </button>
+                        
+                        <!-- YOUTUBE: Usa window.open() para evitar Erro 153 -->
+                        <button onclick="window.open('https://youtu.be/De_ty_SIFhA', '_blank')"
+                            class="w-full text-left px-4 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition duration-200 shadow-md flex items-center space-x-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                            <span>Técnicas Poderosas (Parte 2)</span>
+                        </button>
+                    </div>
                     <p class="mt-8 text-sm text-gray-500 dark:text-gray-400">O conteúdo escrito do curso será adicionado abaixo futuramente.</p>
                 `,
             },
-            // CURSO 3 - RESTRITO (LIDERANÇA ESTRATÉGICA)
+            // CURSO (YOUTUBE) - RESTRITO
             'restricted-leadership-course': {
                 color: 'red',
                 restricted: true,
@@ -1091,6 +1231,7 @@
                     <h5 class="text-xl font-bold text-gray-800 dark:text-white mb-4">Série Completa: Liderando Pessoas</h5>
 
                     <div class="space-y-3">
+                        <!-- YOUTUBE: Usa window.open() para evitar Erro 153 -->
                         <button onclick="window.open('https://youtu.be/jM-sxxAMDB8', '_blank')"
                             class="w-full text-left px-4 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition duration-200 shadow-md flex items-center space-x-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
@@ -1177,7 +1318,7 @@
             localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
         }
 
-        function applyTheme() {
+function applyTheme() {
             const themeIcon = document.getElementById('theme-icon');
 
             if (isDarkMode) {
@@ -1350,6 +1491,31 @@
             }
         }
 
+        // --- Funções do Modal de Vídeo (NÃO USADAS ATUALMENTE, MAS MANTIDAS) ---
+        
+        /**
+         * Abre o modal de vídeo com a URL de incorporação.
+         * @param {string} embedUrl - A URL (YouTube embed ou Google Drive preview).
+         */
+        function openVideoModal(embedUrl) {
+            // Esta função não deve ser chamada se os vídeos estiverem bloqueados.
+            // Ação de fallback: abrir em nova aba.
+            console.warn("openVideoModal foi chamada, mas os vídeos estão configurados para abrir em nova aba para evitar erros de incorporação.");
+            window.open(embedUrl.replace('/preview', '/view?usp=drive_link'), '_blank');
+            
+            // Código original do miniplayer (desativado):
+            // videoIframe.src = embedUrl;
+            // videoPlayerModal.classList.remove('hidden');
+        }
+
+        /**
+         * Fecha o modal de vídeo e limpa o src do iframe para parar a reprodução.
+         */
+        function closeVideoModal() {
+            videoPlayerModal.classList.add('hidden');
+            videoIframe.src = ''; // Importante para parar o vídeo
+        }
+
 
         // --- EXPORTAR FUNÇÕES PARA O ESCOPO GLOBAL ---
         // Funções acessíveis diretamente via onclick no HTML
@@ -1361,6 +1527,9 @@
         window.closePasswordModal = closePasswordModal;
         window.openPasswordModal = openPasswordModal; // Expondo para o escopo global
         window.checkPassword = checkPassword; // Expondo a função de verificação
+        // Modal de vídeo (mesmo não usado, precisa estar global)
+        window.openVideoModal = openVideoModal;
+        window.closeVideoModal = closeVideoModal;
 
 
         // --- Inicialização do App (Executado no carregamento do módulo) ---
